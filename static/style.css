@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #121212;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: #000;
+    padding: 24px 12px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1DB954;
+    padding: 0 12px;
+    margin-bottom: 30px;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    color: #b3b3b3;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-item:hover {
+    color: #fff;
+    background: #282828;
+}
+
+.nav-item.active {
+    color: #fff;
+    background: #282828;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 240px;
+    padding: 24px 32px;
+    flex: 1;
+    overflow-y: auto;
+    height: calc(100vh - 90px);
+}
+
+.view {
+    display: none;
+    animation: fadeIn 0.3s;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+/* Search */
+.search-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 30px;
+    background: #282828;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
+
+#search-input:focus {
+    background: #3e3e3e;
+}
+
+#search-button {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 30px;
+    background: #1DB954;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#search-button:hover {
+    transform: scale(1.05);
+}
+
+/* Music Grid */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 8px 0;
+}
+
+.music-card {
+    background: #181818;
+    padding: 16px;
+    border-radius: 12px;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.music-card:hover {
+    background: #282828;
+    transform: translateY(-4px);
+}
+
+.music-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+.music-card .title {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.music-card .artist {
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+.music-card .actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.music-card .actions button {
+    background: rgba(0,0,0,0.7);
+    border: none;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s;
+}
+
+.music-card .actions button:hover {
+    background: #1DB954;
+    transform: scale(1.1);
+}
+
+.music-card .duration {
+    font-size: 12px;
+    color: #b3b3b3;
+    margin-top: 4px;
+}
+
+/* Player */
+.player {
+    background: #181818;
+    border-top: 1px solid #282828;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.player-info {
+    flex: 1;
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-name {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.track-artist {
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+.player-controls {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.control-btn:hover {
+    transform: scale(1.1);
+}
+
+#progress-bar {
+    flex: 1;
+    max-width: 400px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #535353;
+    border-radius: 2px;
+    outline: none;
+}
+
+#progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1DB954;
+    cursor: pointer;
+}
+
+#time-display {
+    font-size: 12px;
+    color: #b3b3b3;
+    min-width: 80px;
+}
+
+.player-volume {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#volume-control {
+    width: 100px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #535353;
+    border-radius: 2px;
+    outline: none;
+}
+
+#volume-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1DB954;
+    cursor: pointer;
+}
+
+/* Downloads */
+.download-item {
+    background: #181818;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.download-progress {
+    width: 100%;
+    height: 6px;
+    background: #282828;
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.download-progress-bar {
+    height: 100%;
+    background: #1DB954;
+    transition: width 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+        padding: 16px 8px;
+    }
+    
+    .logo-text, .nav-item span:not(:first-child) {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 60px;
+        padding: 16px;
+    }
+    
+    .music-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+    }
+    
+    .player-controls {
+        flex: 3;
+    }
+    
+    #progress-bar {
+        max-width: 200px;
+    }
+}
