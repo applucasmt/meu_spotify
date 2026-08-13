@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 MySpotify - Seu Player Musical</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">🎵</span>
+            <span class="logo-text">MySpotify</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active" data-view="library">
+                <span>📚</span> Biblioteca
+            </a>
+            <a href="#" class="nav-item" data-view="search">
+                <span>🔍</span> Buscar
+            </a>
+            <a href="#" class="nav-item" data-view="downloads">
+                <span>⬇️</span> Downloads
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- View: Biblioteca -->
+        <section id="view-library" class="view active">
+            <h1>Sua Biblioteca</h1>
+            <div id="library-list" class="music-grid">
+                <!-- Músicas serão carregadas aqui -->
+            </div>
+        </section>
+
+        <!-- View: Busca -->
+        <section id="view-search" class="view">
+            <h1>Buscar Músicas</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Digite o nome da música ou artista..." />
+                <button id="search-button">🔍 Buscar</button>
+            </div>
+            <div id="search-results" class="music-grid">
+                <!-- Resultados da busca -->
+            </div>
+        </section>
+
+        <!-- View: Downloads -->
+        <section id="view-downloads" class="view">
+            <h1>Downloads em Andamento</h1>
+            <div id="downloads-list">
+                <!-- Downloads ativos -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Player de Música -->
+    <footer class="player">
+        <div class="player-info">
+            <div id="now-playing" class="track-info">
+                <span class="track-name">Nenhuma música tocando</span>
+                <span class="track-artist">-</span>
+            </div>
+        </div>
+        <div class="player-controls">
+            <button id="play-pause-btn" class="control-btn">⏸️</button>
+            <input type="range" id="progress-bar" min="0" max="100" value="0">
+            <span id="time-display">0:00 / 0:00</span>
+        </div>
+        <div class="player-volume">
+            <input type="range" id="volume-control" min="0" max="100" value="80">
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
